@@ -165,6 +165,7 @@ ln2(self) == /\ pc[self] = "ln2"
                 \/ /\ IF candidates[self] = {}
                          THEN /\ leader[self] # Bot
                               /\ LET hs == voted[leader[self]] IN
+                                   /\ preImage[self][h] # Bot
                                    /\ hs # {}
                                    /\ voted' = [voted EXCEPT ![self] = voted[self] \union hs]
                          ELSE /\ TRUE
